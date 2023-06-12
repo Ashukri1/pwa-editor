@@ -1,6 +1,6 @@
 const { warmStrategyCache } = require("workbox-recipes");
 const { CacheFirst, StaleWhileRevalidate } = require("workbox-strategies");
-const { registerroute } = require("workbox-routing");
+const { registerRoute } = require("workbox-routing");
 const { CacheableResponsePlugin } = require("workbox-cacheable-response");
 const { ExpirationPlugin } = require("workbox-expiration");
 const { precacheAndRoute } = require("workbox-precaching/precacheAndRoute");
@@ -28,7 +28,7 @@ registerRoute(({ request }) => request.mode === "navigate", pageCache);
 registerRoute(
   ({ request }) =>["style", "script", "worker", "image"].includes(request.destination),
   new StaleWhileRevalidate({
-    cacheName: "assestCache",
+    cacheName: "assest-cache",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
