@@ -26,6 +26,7 @@ registerRoute(({ request }) => request.mode === "navigate", pageCache);
 
 //TODO: implement assest caching
 registerRoute(
+  ({ request }) =>["style", "script", "worker", "image"].includes(request.destination),
   new registerRoute({
     cacheName: "assestCache",
     plugins: [
